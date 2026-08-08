@@ -12,9 +12,9 @@
 
 | ユニット      | AI モデル        | 視点                     |
 | ------------- | ---------------- | ------------------------ |
-| MELCHIOR • 1  | OpenAI GPT       | 科学者——論理・合理的分析 |
-| BALTHASAR • 2 | Anthropic Claude | 母親——保護・ケア志向     |
-| CASPER • 3    | Google Gemini    | 女性——直感・感情的洞察   |
+| MELCHIOR • 1  | OpenAI GPT       | 科学者として、論理と合理性を重視 |
+| BALTHASAR • 2 | Anthropic Claude | 母として、保護と慈愛を重視       |
+| CASPER • 3    | Google Gemini    | 女性として、直感と感情を重視     |
 
 ## 決定結果
 
@@ -71,11 +71,12 @@ docker compose up
 | 変数名              | 説明                              | デフォルト         |
 | ------------------- | --------------------------------- | ------------------ |
 | `OPENAI_API_KEY`    | OpenAI API キー（MELCHIOR-1）     | —                  |
-| `OPENAI_MODEL`      | OpenAI モデル名                   | `gpt-4o-mini`      |
+| `OPENAI_MODEL`      | GPT モデル名                     | `gpt-5.6-luna`      |
+| `OPENAI_REASONING_EFFORT` | GPT の推論レベル（`low`、`medium`、`high`） | `low` |
 | `ANTHROPIC_API_KEY` | Anthropic API キー（BALTHASAR-2） | —                  |
 | `ANTHROPIC_MODEL`   | Anthropic モデル名                | `claude-haiku-4-5` |
 | `GOOGLE_API_KEY`    | Google AI API キー（CASPER-3）    | —                  |
-| `GOOGLE_MODEL`      | Google モデル名                   | `gemini-2.5-flash` |
+| `GOOGLE_MODEL`      | Google モデル名                   | `gemini-3.5-flash-lite` |
 
 ## 使い方
 

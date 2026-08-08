@@ -13,19 +13,21 @@ function parseVoteResponse(text: string): { reasoning: string; vote: Vote; isCri
   return { reasoning: parsed.reasoning || "", vote, isCritical: parsed.isCritical === true };
 }
 
+function getOpenAIReasoningEffort(): "low" | "medium" | "high" {
+  const effort = process.env.OPENAI_REASONING_EFFORT;
+  return effort === "medium" || effort === "high" ? effort : "low";
+}
+
 export async function queryMelchior(topic: string): Promise<{ reasoning: string; vote: Vote; isCritical: boolean }> {
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  const response = await client.chat.completions.create({
-    model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
-    messages: [
-      { role: "system", content: MELCHIOR_PROMPT },
-      { role: "user", content: topic },
-    ],
-    temperature: 0.7,
-    max_tokens: 300,
+  const response = await client.responses.create({
+    model: process.env.OPENAI_MODEL ?? "gpt-5.6-luna",
+    instructions: MELCHIOR_PROMPT,
+    input: topic,
+    reasoning: { effort: getOpenAIReasoningEffort() },
+    max_output_tokens: 1024,
   });
-  const text = response.choices[0]?.message?.content ?? "";
-  return parseVoteResponse(text);
+  return parseVoteResponse(response.output_text);
 }
 
 export async function queryBalthasar(topic: string): Promise<{ reasoning: string; vote: Vote; isCritical: boolean }> {
@@ -43,12 +45,12 @@ export async function queryBalthasar(topic: string): Promise<{ reasoning: string
 export async function queryCasper(topic: string): Promise<{ reasoning: string; vote: Vote; isCritical: boolean }> {
   const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY ?? "");
   const model = genAI.getGenerativeModel({
-    model: process.env.GOOGLE_MODEL ?? "gemini-2.5-flash",
+    model: process.env.GOOGLE_MODEL ?? "gemini-3.5-flash-lite",
     systemInstruction: CASPER_PROMPT,
   });
   const result = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: topic }] }],
-    generationConfig: { thinkingConfig: { thinkingBudget: 0 } } as object,
+    generationConfig: { thinkingConfig: { thinkingLevel: "minimal" } } as object,
   });
   const text = result.response.text();
   return parseVoteResponse(text);

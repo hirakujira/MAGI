@@ -12,7 +12,7 @@
 
 | 電腦          | AI 模型          | 視角                   |
 | ------------- | ---------------- | ---------------------- |
-| MELCHIOR • 1  | OpenAI GPT       | 科學家——邏輯、理性分析 |
+| MELCHIOR • 1  | OpenAI GPT         | 科學家——邏輯、理性分析 |
 | BALTHASAR • 2 | Anthropic Claude | 母親——保護、關懷導向   |
 | CASPER • 3    | Google Gemini    | 女性——直覺、情感洞察   |
 
@@ -71,11 +71,12 @@ docker compose up
 | 變數名稱            | 說明                              | 預設值             |
 | ------------------- | --------------------------------- | ------------------ |
 | `OPENAI_API_KEY`    | OpenAI API 金鑰（MELCHIOR-1）     | —                  |
-| `OPENAI_MODEL`      | OpenAI 模型名稱                   | `gpt-4o-mini`      |
+| `OPENAI_MODEL`      | GPT 模型名稱                     | `gpt-5.6-luna`      |
+| `OPENAI_REASONING_EFFORT` | GPT 推理程度（`low`、`medium` 或 `high`） | `low` |
 | `ANTHROPIC_API_KEY` | Anthropic API 金鑰（BALTHASAR-2） | —                  |
 | `ANTHROPIC_MODEL`   | Anthropic 模型名稱                | `claude-haiku-4-5` |
 | `GOOGLE_API_KEY`    | Google AI API 金鑰（CASPER-3）    | —                  |
-| `GOOGLE_MODEL`      | Google 模型名稱                   | `gemini-2.5-flash` |
+| `GOOGLE_MODEL`      | Google 模型名稱                   | `gemini-3.5-flash-lite` |
 
 ## 使用方式
 

@@ -12,7 +12,7 @@ A fan-made web application inspired by the MAGI supercomputer from _Neon Genesis
 
 | Unit          | AI Model         | Perspective                             |
 | ------------- | ---------------- | --------------------------------------- |
-| MELCHIOR • 1  | OpenAI GPT       | Scientist — logic and rational analysis |
+| MELCHIOR • 1  | OpenAI GPT         | Scientist — logic and rational analysis |
 | BALTHASAR • 2 | Anthropic Claude | Mother — protection and care-oriented   |
 | CASPER • 3    | Google Gemini    | Woman — intuition and emotional insight |
 
@@ -71,11 +71,12 @@ docker compose up
 | Variable            | Description                     | Default            |
 | ------------------- | ------------------------------- | ------------------ |
 | `OPENAI_API_KEY`    | OpenAI API key (MELCHIOR-1)     | —                  |
-| `OPENAI_MODEL`      | OpenAI model name               | `gpt-4o-mini`      |
+| `OPENAI_MODEL`      | GPT model name                 | `gpt-5.6-luna`      |
+| `OPENAI_REASONING_EFFORT` | GPT reasoning effort (`low`, `medium`, or `high`) | `low` |
 | `ANTHROPIC_API_KEY` | Anthropic API key (BALTHASAR-2) | —                  |
 | `ANTHROPIC_MODEL`   | Anthropic model name            | `claude-haiku-4-5` |
 | `GOOGLE_API_KEY`    | Google AI API key (CASPER-3)    | —                  |
-| `GOOGLE_MODEL`      | Google model name               | `gemini-2.5-flash` |
+| `GOOGLE_MODEL`      | Google model name               | `gemini-3.5-flash-lite` |
 
 ## How to Use
 
